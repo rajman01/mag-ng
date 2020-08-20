@@ -1,0 +1,26 @@
+{% extends "articles/base.html" %}
+{% block content %}
+    <div class="page_title_container">
+        <h3 class="page_title text-center">LATEST COVID 19 NEWS</h3>
+        </div>
+
+<section id="top_magazine">
+    <div class="content">
+        {% for article in articles %}
+        <div class="row article-row border-bottom">
+            <div class="col-md-6 col-sm-12">
+                <div class="article-image">
+                    <img class="article-image" src="{{ article.urlToImage }}">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="article-text">
+                    <a href="{{ article.url }}" target="_blank" class="article-header-link"><h3>{{article.title}}</h3></a>
+                    <p>{{ article.description }} <a href="{{ article.url }}" target="_blank"> Cick here to see full article</a></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

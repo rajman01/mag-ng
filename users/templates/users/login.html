@@ -1,0 +1,34 @@
+{% extends "articles/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <main>
+        <form id="login" method="POST" action="">
+                {% csrf_token %}
+                <legend>Login</legend>
+                {{ form|crispy }}
+                <div class="btn-submit">
+                        <input type="submit" value="LOG IN" />
+                </div>
+                <div class="social">
+                        <span class="socialtext">OR SIGN IN WITH</span>
+                        <div class="socialicons">
+                                <span class="iconitem">
+                                        <img src="{% static 'users/assets/facebook.svg' %}" alt="facebook icon"/>
+                                </span>
+                                    <span class="iconitem">
+                                            <img src="{% static 'users/assets/pinterest.svg' %}" alt="twitter icon"/>
+                                    </span>
+                            <span class="iconitem">
+                                    <img src="{% static 'users/assets/twitter.svg' %}" alt="pinterest icon"/>
+                            </span>
+                        </div>
+                </div>
+                <div class="signin">
+                  <p>DON'T HAVE AN ACCOUNT YET?</p>
+                  <p>CLICK HERE TO <a href="{% url 'users:signup' %}" id="signuplink">SIGN UP</a></p>
+                    <p>Forgot Password? <a href="{% url 'password_reset' %}" id="signuplink">Click here</a></p>
+                </div>
+        </form>
+    </main>
+{% endblock content %}

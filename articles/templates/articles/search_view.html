@@ -1,0 +1,32 @@
+{% extends "articles/base.html" %}
+{% load custom_filter_tags %}
+{% block content %}
+        <div class="page_title_container">
+        <h3 class="page_title text-center"> You searched for {{ category }}</h3>
+        </div>
+
+        <section id="top_magazine">
+        <div class="magazine_grid">
+            {% if not objects %}
+                <h2>No result found</h2>
+            {% else %}
+            {% for article in objects %}
+            <a href="{% url 'articles:detail' article.id %}">
+            <div class="magazine_card">
+                <div class="magazine_img_cover">
+                    {% if article.cover_image %}
+                    <img src="{{ article.cover_image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="magazine_card_content">
+                    <span class="magazine_title">{{ article.categories }}</span>
+                    <h6>{{ article.title|shrink }}...</h6>
+                    <p class="time">{{ article.date_posted|date:"F d, Y" }}</p>
+                </div>
+            </div>
+                </a>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}

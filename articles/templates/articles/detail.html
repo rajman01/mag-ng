@@ -1,0 +1,120 @@
+{% extends "articles/base.html" %}
+{% load custom_filter_tags %}
+{% block content %}
+    <div class="container-fluid">
+        {% if object.cover_image %}
+            <div class="row article-head">
+                <div class="col-lg-6 col-md-12 max-height">
+                    <div class="cover-img-div">
+                        <img src="{{ object.cover_image.url }}" alt="article-cover-image" class="cover-img">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 max-height">
+                    <div class="article-info">
+                        <div class="category-wrapper">
+                            <p class="article-category text-muted">{{ object.categories|capitalize_all }}</p>
+                        </div>
+                        <h1 class="article-title">{{ object.title }}</h1>
+                        <div class="red-line"></div>
+                        <span class="article-author">
+                            <span class="prefix">By <span class="article-author"><a href="{% url 'users:profile' object.author.id %}" class="author-link text-muted">{{ object.author.username|capitalize_all }}</a> </span></span>
+                        </span><br>
+                        <time class="article_date text-muted">{{ object.date_posted|date:"F d, Y"  }}</time>
+                        {% if object.description %}
+                            <div class="description-wrapper pt-3">
+                                <span class="text-muted">{{ object.description|linebreaks }}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-md-8 col-sm-12">
+                   <div class="article-info">
+                        <div class="category-wrapper">
+                            <p class="article-category text-muted">{{ object.categories|capitalize_all }}</p>
+                        </div>
+                        <h1 class="article-title">{{ object.title }}</h1>
+                        <div class="red-line"></div>
+                        <span class="article-author">
+                            <span class="prefix">By <span class="article-author"><a href="{% url 'users:profile' object.author.id %}" class="author-link text-muted">{{ object.author.username|capitalize_all }}</a> </span></span>
+                        </span><br>
+                        <time class="article_date text-muted">{{ object.date_posted|date:"F d, Y"  }}</time>
+                        {% if object.description %}
+                            <div class="description-wrapper pt-3">
+                                <span class="text-muted">{{ object.description|linebreaks }}</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+        {% endif %}
+    </div>
+    <div class="container pt-3">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-8 col-sm-12">
+                {% for field in main_content %}
+                    {% if field|check_image %}
+                        <div class="field-content mt-5 mb-5">
+                            {% if field.image %}
+                                <div class="image-field">
+                                    <img src="{{ field.image.url }}">
+                                </div>
+                                {% if field.image_description %}
+                                    <div class="image-desc-div ml-3">
+                                        <span class="text-muted">{{ field.image_description|linebreaks }}</span>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if field|check_text %}
+                        <div class="field-content  mt-5 mb-5">
+                            {% if field.header %}
+                                <h3>{{ field.header }}</h3>
+                            {% endif %}
+                            {% if field.text %}
+                                <p>{{ field.text|linebreaks }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+             <div class="col"></div>
+        </div>
+        {% if user == object.author %}
+        <a href="{% url 'articles:edit' object.id %}" class="btn btn-outline-primary">Edit</a>
+        <a href="{% url 'articles:delete' object.id %}" class="btn btn-danger">Delete</a>
+        {% endif %}
+    </div>
+
+    {% if more %}
+     <section id="top_magazine">
+        <div class="d-flex justify-content-between my-4">
+            <h4 class="body_title">More by {{ object.author.username }}</h4>
+
+        </div>
+        <div class="magazine_grid">
+            {% for article in more %}
+            <a href="{% url 'articles:detail' article.id %}">
+            <div class="magazine_card">
+                <div class="magazine_img_cover">
+                    {% if article.cover_image %}
+                    <img src="{{ article.cover_image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="magazine_card_content">
+                    <p class="magazine_title">{{ article.title|shrink }}</p>
+                    <p class="time">{{ article.date_posted|date:"F d, Y" }}</p>
+                </div>
+            </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+{% endblock content %}

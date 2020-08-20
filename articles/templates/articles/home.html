@@ -1,0 +1,408 @@
+{% load static %}
+{% load custom_filter_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>Mag-Ng | {{ title }}</title>
+    {% else %}
+    <title>Mag-Ng</title>
+    {% endif %}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'articles/css/landing.css' %}">
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{% static 'articles/css/bootstrap.min.css' %}">
+    <!-- Box Icons -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <!-- AOS Library Stylesheet -->
+    <link rel="stylesheet" href="{% static 'articles/css/aos.css' %}">
+</head>
+
+<body>
+
+    <!-- Page Preloader -->
+    <div class="loader">
+        <div class="w-25">
+            <img src="{% static 'articles/images/logo.png' %}" class="mx-auto" alt="">
+        </div>
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <button onclick="topFunction()" id="myBtn" title="Scroll to top">
+        <i class='bx bx-up-arrow-alt'></i>
+    </button>
+    <!-- End of Page Preloader -->
+    <header id="landing_header">
+        <nav class="navbar navbar-expand-sm navbar-dark fixed">
+            <a class="navbar-brand" href="{% url 'articles:home' %}"><img src="{% static 'articles/images/logo.png' %}" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class='bx bx-menu'></i>
+            </button>
+            <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active"> <a class="nav-link" href="{% url 'articles:covid' %}">COVID 19 UPDATES</a> </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown has-megamenu">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">MAGAZINES</a>
+                        <div class="dropdown-menu megamenu ml-auto" role="menu">
+                            <h6 class="title">CATEGORIES</h6>
+                            <div class="row">
+                                <div class="col-md-3 col-6">
+                                    <div class="col-megamenu">
+                                        <ul class="list-unstyled">
+                                            <li><a href="{% url 'articles:category' 'Art & Architecture' %}">Art & Architecture</a></li>
+                                            <li><a href="{% url 'articles:category' 'Celebrity & Gossip' %}">Celebrity & Gossip</a></li>
+                                            <li><a href="{% url 'articles:category' 'Family and Parenting' %}">Family and Parenting</a></li>
+                                            <li><a href="{% url 'articles:category' 'Home and Garden' %}">Home and Garden</a></li>
+                                            <li><a href="{% url 'articles:category' 'Men\'s Lifestyle' %}">Men's Lifestyle</a></li>
+                                            <li><a href="{% url 'articles:category' 'Science & Engineering' %}">Science & Engineering</a></li>
+                                            <li><a href="{% url 'articles:category' 'Women\'s Livestyle' %}">Women's Livestyle</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="col-megamenu">
+                                        <ul class="list-unstyled">
+                                            <li><a href="{% url 'articles:category' 'Boating & Aviation' %}">Boating & Aviation</a></li>
+                                            <li><a href="{% url 'articles:category' 'Comics & Manga' %}">Comics & Manga</a></li>
+                                            <li><a href="{% url 'articles:category' 'Fashion' %}">Fashion</a></li>
+                                            <li><a href="{% url 'articles:category' 'Hunting & Fishing' %}">Hunting & Fishing</a></li>
+                                            <li><a href="{% url 'articles:category' 'Movies, TV & Music' %}">Movies, TV & Music</a></li>
+                                            <li><a href="{% url 'articles:category' 'Sports' %}">Sports</a></li>
+                                            <li><a href="{% url 'articles:category' 'Adult +18' %}">Adult +</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="col-megamenu">
+                                        <ul class="list-unstyled">
+                                            <li><a href="{% url 'articles:category' 'Business & Finance' %}">Business & Finance</a></li>
+                                            <li><a href="{% url 'articles:category' 'Crafts' %}">Crafts</a></li>
+                                            <li><a href="{% url 'articles:category' 'Food & Wine' %}">Food & Wine</a></li>
+                                            <li><a href="{% url 'articles:category' 'Kids & Teens' %}">Kids & Teens</a></li>
+                                            <li><a href="{% url 'articles:category' 'News & Politics' %}">News & Politics</a></li>
+                                            <li><a href="{% url 'articles:category' 'Tech & Gaming' %}">Tech & Gaming</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="col-megamenu">
+                                        <ul class="list-unstyled">
+                                            <li><a href="{% url 'articles:category' 'Cars & Motocycles' %}">Cars & Motocycles</a></li>
+                                            <li><a href="{% url 'articles:category' 'Culture & Literature' %}">Culture & Literature</a></li>
+                                            <li><a href="{% url 'articles:category' 'Health & Fitness' %}">Health & Fitness</a></li>
+                                            <li><a href="{% url 'articles:category' 'Luxury' %}">Luxury</a></li>
+                                            <li><a href="{% url 'articles:category' 'Photography' %}">Photography</a></li>
+                                            <li><a href="{% url 'articles:category' 'Travel & Outdoor' %}">Travel & Outdoor</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <h6 class="title mt-lg-5 mt-md-3 mt-2">FEATURED</h6>
+                            <div class="row">
+
+                                <div class="col-md-3 col-6">
+                                    <div class="col-megamenu">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Most Popular</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="col-megamenu">
+                                        <ul class="list-unstyled">
+                                            <li><a href="{% url 'articles:recent' %}#">Recently Added</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="col-megamenu">
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Newsletters & info.</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'users:profile' user.id %}">MY LIBRARY</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'articles:create' %}">CREATE</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'users:logout' %}">LOGOUT</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}">SIGN IN</a></li>
+                    <li class="nav-item"><a class="nav-link" id="sign_up" href="{% url 'users:signup' %}">SIGN UP</a></li>
+                    {% endif %}
+
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="landing_contents d-flex h-100">
+            <div class="left_landing text-center d-flex flex-column justify-content-center">
+                <h2>MAGAZINES</h2>
+                <h2>AT YOUR FINGERTIPS</h2>
+<!--                <h4>Access, Search and save your favourite Magazines...</h4>-->
+                <div class="text-center w-100">
+                    {% if not user.is_authenticated %}
+                     <button href="{% url 'users:signup' %}" class="get_started">GET STARTED</button>
+                    {%  endif %}
+
+<!--                    <button href="#top-magazine" class="get_started">GET STARTED</button>-->
+                </div>
+<!--                <form action="{% url 'articles:search' %}" method="GET">-->
+<!--                    <h3>SEARCH YOUR MAGAZINES</h3>-->
+<!--                    <div class="position-relative mt-lg-3 mt-3">-->
+<!--                        <button type="submit"> <i class='bx bx-search-alt-2'></i></button>-->
+<!--                        <input type="text" name="q" class="form-control" id="search_field"-->
+<!--                            placeholder="Search for your magazines...">-->
+<!--                    </div>-->
+<!--                </form>-->
+
+            </div>
+            <div class="right_landing d-flex flex-column justify-content-center align-items-center">
+                <div class="landing_img_cover">
+                    <img src="{% static 'articles/images/1597630954338.png' %}" data-aos="zoom-in" data-aos-duration="3000" alt="">
+                </div>
+            </div>
+        </div>
+    </header>
+     <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-md-6 col-sm-12">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    <!-- =========================
+        Magazine Section
+    =========================== -->
+    <section id="top_magazine">
+        <div class="d-flex justify-content-between my-4">
+            <h4 class="body_title">Recommended</h4>
+<!--            <a href="pages/your_magazines.html" class="mt-lg-2 mt-md-1 mt-0"><i class='bx bxs-grid'></i></a>-->
+        </div>
+        <div class="magazine_grid">
+            {% for article in recommended %}
+            <a href="{% url 'articles:detail' article.id %}">
+            <div class="magazine_card" data-aos="fade-up" {% if article|get_index:recommended != 0 %}  data-aos-delay="{{ article|get_index:recommended|multiply }}" {% endif %} data-aos-duration="1500">
+                <div class="magazine_img_cover">
+                    {% if article.cover_image %}
+                    <img src="{{ article.cover_image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="magazine_card_content">
+                    <span class="magazine_title">{{ article.categories }}</span>
+                    <h6>{{ article.title|shrink }}...</h6>
+                    <p class="time">{{ article.date_posted|date:"F d, Y" }}</p>
+                </div>
+            </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="second_magazine">
+        <div class="d-flex justify-content-between my-4">
+            <h4 class="body_title">Recently Added</h4>
+            <a href="{% url 'articles:recent' %}" class="mt-lg-2 mt-md-1 mt-0"><i class='bx bxs-grid'></i></a>
+        </div>
+         <div class="magazine_grid">
+            {% for article in recent %}
+            <a href="{% url 'articles:detail' article.id %}">
+            <div class="magazine_card" data-aos="fade-up" {% if article|get_index:recent != 0 %}  data-aos-delay="{{ article|get_index:recent|multiply }}" {% endif %} data-aos-duration="1500">
+                <div class="magazine_img_cover">
+                    {% if article.cover_image %}
+                    <img src="{{ article.cover_image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="magazine_card_content">
+                    <span class="magazine_title">{{ article.categories }}</span>
+                    <h6>{{ article.title|shrink }}...</h6>
+                    <p class="time">{{ article.date_posted|date:"F d, Y" }}</p>
+                </div>
+            </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="third_magazine">
+        <div class="d-flex justify-content-between my-4">
+            <h4 class="body_title">SCIENCE AND ENGINEERING</h4>
+            <a href="{% url 'articles:category' 'Science & Engineering' %}" class="mt-lg-2 mt-md-1 mt-0"><i class='bx bxs-grid'></i></a>
+        </div>
+        <div class="magazine_grid">
+            {% for article in science %}
+            <a href="{% url 'articles:detail' article.id %}">
+            <div class="magazine_card" data-aos="fade-up" {% if article|get_index:science != 0 %}  data-aos-delay="{{ article|get_index:science|multiply }}" {% endif %} data-aos-duration="1500">
+                <div class="magazine_img_cover">
+                    {% if article.cover_image %}
+                    <img src="{{ article.cover_image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="magazine_card_content">
+                    <span class="magazine_title">{{ article.categories }}</span>
+                    <h6>{{ article.title|shrink }}...</h6>
+                    <p class="time">{{ article.date_posted|date:"F d, Y" }}</p>
+                </div>
+            </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="fourth_magazine">
+        <div class="d-flex justify-content-between my-4">
+            <h4 class="body_title">BUSINESS AND FINANCE</h4>
+            <a href="{% url 'articles:category' 'Business & Finance' %}" class="mt-lg-2 mt-md-1 mt-0"><i class='bx bxs-grid'></i></a>
+        </div>
+        <div class="magazine_grid">
+            {% for article in business %}
+            <a href="{% url 'articles:detail' article.id %}">
+            <div class="magazine_card" data-aos="fade-up" {% if article|get_index:business != 0 %}  data-aos-delay="{{ article|get_index:business|multiply }}" {% endif %} data-aos-duration="1500">
+                <div class="magazine_img_cover">
+                    {% if article.cover_image %}
+                    <img src="{{ article.cover_image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="magazine_card_content">
+                    <span class="magazine_title">{{ article.categories }}</span>
+                    <h6>{{ article.title|shrink }}...</h6>
+                    <p class="time">{{ article.date_posted|date:"F d, Y" }}</p>
+                </div>
+            </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="fifth_magazine">
+        <div class="d-flex justify-content-between my-4">
+            <h4 class="body_title">FASHION</h4>
+            <a href="{% url 'articles:category' 'Fashion' %}" class="mt-lg-2 mt-md-1 mt-0"><i class='bx bxs-grid'></i></a>
+        </div>
+         <div class="magazine_grid">
+            {% for article in fashion %}
+            <a href="{% url 'articles:detail' article.id %}">
+            <div class="magazine_card" data-aos="fade-up" {% if article|get_index:fashion != 0 %}  data-aos-delay="{{ article|get_index:fashion|multiply }}" {% endif %} data-aos-duration="1500">
+                <div class="magazine_img_cover">
+                    {% if article.cover_image %}
+                    <img src="{{ article.cover_image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="magazine_card_content">
+                    <span class="magazine_title">{{ article.categories }}</span>
+                    <h6>{{ article.title|shrink }}...</h6>
+                    <p class="time">{{ article.date_posted|date:"F d, Y" }}</p>
+                </div>
+            </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+
+
+    <footer id="main_footer">
+        <div class="footer_top">
+            <div class="footer_grid">
+                <div class="">
+                    <div class="d-flex flex-column">
+                        <div class="logo_cover">
+                            <img src="{% static 'articles/images/logo.png' %}" alt="">
+                        </div>
+                        <form action="">
+                            <p>For Updates, Newsletters and other info</p>
+                            <div class="position-relative">
+                                <input type="email" class="form-control" id="email_sub" placeholder="Email">
+                                <button class="subscribe_button position-absolute">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="">
+                    <div class="d-flex flex-column">
+                        <h3>COMPANY</h3>
+                        <a>Careers</a>
+                        <a>News</a>
+                        <a>About</a>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="d-flex flex-column">
+                        <h3>RESOURCES</h3>
+                        <a>Faqs</a>
+                        <a>Contact Support</a>
+                        <div class="d-flex">
+                            <span class="d-flex">
+                                <a href="" class="icons"><i class='bx bxl-facebook'></i></a>
+                                <a href="" class="icons mx-2"><i class='bx bxl-twitter'></i></a>
+                                <a href="" class="icons"><i class='bx bxl-pinterest-alt'></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="d-flex flex-column">
+                        <div class="app_img">
+                            <img src="{% static 'articles/images/google_app.png' %}" alt="">
+                        </div>
+                        <div class="app_img mt-1">
+                            <img src="{% static 'articles/images/app.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom d-flex justify-content-between">
+            <div>
+                <p>&copy; 2020 MagNg - All rights reserved UI Design by <span class="designer"></span></p>
+            </div>
+            <div class="d-flex">
+                <a href="">Privacy</a>
+                <a href="" class="mx-3">Cookies</a>
+                <a href="">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="{% static 'articles/javascript/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'articles/javascript/popper.js' %}"></script>
+    <script src="{% static 'articles/javascript/bootstrap.min.js' %}"></script>
+    <script src="{% static 'articles/javascript/landing.js' %}"></script>
+    <script src="{% static 'articles/javascript/aos.js' %}"></script>
+</body>
+
+</html>

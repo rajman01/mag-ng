@@ -1,0 +1,37 @@
+{% extends "articles/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+        <main>
+        <form id="login" method="POST" action="">
+                {% csrf_token %}
+                <legend>Sign Up</legend>
+                {{ form|crispy }}
+                <div class="btn-submit">
+                        <input type="submit" value="SIGN UP" />
+                </div>
+                <span class="terms"
+          >By registering, you accept our
+          <a href="http://">terms and conditions</a>
+        </span>
+                <div class="social">
+                        <span class="socialtext">OR SIGN UP WITH</span>
+                        <div class="socialicons">
+                                <span class="iconitem">
+                                        <img src="{% static 'users/assets/facebook.svg' %}" alt="facebook icon"/>
+                                </span>
+                                    <span class="iconitem">
+                                            <img src="{% static 'users/assets/pinterest.svg' %}" alt="twitter icon"/>
+                                    </span>
+                            <span class="iconitem">
+                                    <img src="{% static 'users/assets/twitter.svg' %}" alt="pinterest icon"/>
+                            </span>
+                        </div>
+                </div>
+                <div class="signin">
+                  <p>ALREADY HAVE AN ACCOUNT?</p>
+                  <p>CLICK HERE TO <a href="{% url 'users:login' %}" id="signuplink">SIGN IN</a></p>
+                </div>
+        </form>
+            </main>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "articles/base.html" %}
+{% block content %}
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-8 col-sm-12">
+                {% if not objects %}
+                <h2>You have no drafts</h2>
+                {% else %}
+                <legend class="border-bottom mb-4">Your Draft</legend>
+                {% for article in objects %}
+                    <div class="row border-bottom pt-5">
+                        <div class="col-12">
+                            <h2>{{ article.title }}</h2>
+                            {% if article.description %}
+                                <p><span class="text-muted">{{ article.description }}</span> </p>
+                            {% endif %}
+                            <a href="{% url 'articles:edit' article.id %}" class="btn btn-info mt-3 mb-3">continue editing</a>
+                            <a href="{% url 'articles:delete' article.id %}" class="btn btn-danger mt-3 mb-3">delete</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col"></div>
+        </div>
+{% endblock content %}

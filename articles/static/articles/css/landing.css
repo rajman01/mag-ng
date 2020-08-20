@@ -1,0 +1,504 @@
+
+/* ==================================================== */
+/* ============== GENERAL BODY STYLES ================= */
+/* ==================================================== */
+@import url(./navigation.css);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--main-font);
+}
+img {
+    width: 100%;
+    height: auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/* ====== Scroll to top Button ====== */
+#myBtn {
+	display: none;
+	position: fixed;
+	bottom: 30px;
+	right: 50px;
+	z-index: 4;
+	border: none;
+	outline: none;
+	background-color: var(--main-red);
+	color: white;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+
+/* ==================================================== */
+/* =================== HEADER STYLES ================== */
+/* ==================================================== */
+
+#landing_header {
+    height: 100vh;
+    width: 100%;
+    background-image: url(../images/Page0-01.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.landing_contents {
+    padding: 0 3rem;
+}
+.landing_contents * {
+    color: var(--text-white);
+}
+.left_landing, 
+.right_landing {
+    width: 50%;
+    height: 93%;
+}
+.left_landing h2 {
+    line-height: 1.5;
+    font-size: 3.2rem;
+    font-weight: 600;
+}
+.left_landing h4 {
+    width: 70%;
+    text-align: center;
+    margin: 0.7rem auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+.get_started {
+    outline: none;
+    display: block;
+    border: 1px solid var(--text-white);
+    background-color: transparent;
+    padding: 0.4rem 1.5rem;
+    font-size: 1rem;
+    margin: 1rem auto;
+    border-radius: 0.4rem;
+    transition: cubic-bezier(0.755, 0.05, 0.855, 0.06) 0.6s;
+}
+.get_started:hover {
+    outline: none;
+    border: 1px solid var(--main-red);
+    background-color: var(--main-red);
+}
+.left_landing form {
+    margin-top: 5rem;
+    padding: 0 3.5rem;
+}
+.left_landing form h3{
+    color: var(--text-white);
+    font-size: 1.1rem;
+}
+.left_landing form i{
+    position: absolute;
+    color:#888787;
+    left: 0;
+    margin-top: 2%;
+    margin-left: 1rem;
+    font-size: 1.3rem;
+}
+#search_field {
+    padding: 1rem;
+    padding-left: 3rem;
+    outline: none;
+    border: 1px solid var(--text-white);
+    transition: cubic-bezier(0.645, 0.045, 0.355, 1) 0.6s;
+}
+#search_field:hover,
+#search_field:active,
+#search_field:focus {
+    box-shadow: none;
+    border: 1px solid var(--text-gray);
+}
+#search_field:hover + .left_landing form i,
+#search_field:active + .left_landing form i,
+#search_field:focus + .left_landing form i {
+    color: var(--main-red);
+}
+.landing_img_cover {
+    width: 80%;
+}
+
+/* ==================================================== */
+/* ================== MAGAZINE STYLES ================= */
+/* ==================================================== */
+#top_magazine,
+#second_magazine,
+#third_magazine,
+#fourth_magazine,
+#fifth_magazine {
+    padding: 1rem 5rem;
+}
+.body_title {
+    font-size: 1.3rem;
+    color: var(--text-gray);
+}
+#top_magazine a ,
+#second_magazine a,
+#third_magazine a,
+#fourth_magazine a,
+#fifth_magazine a{
+    color: var(--light-gray);
+    font-size: 1.5rem;
+    transition: all 0.6s;
+}
+#top_magazine a:hover {
+    color: var(--main-red);
+}
+.magazine_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-row-gap: 0.2rem;
+    grid-column-gap: 1rem;
+}
+.magazine_card {
+    background-color: var(--text-white);
+    box-shadow: 0px 10px 6px #00000029;
+    border-radius: 0.5rem;
+}
+.magazine_card_content {
+    padding: 0.6rem;
+}
+.magazine_img_cover {
+    border: 1px solid var(--text-white);
+    overflow: hidden;
+    border-radius: 0.5rem;
+    transition: all 0.6s;
+}
+.magazine_img_cover img {
+    transition: all 0.6s;
+}
+.magazine_title,
+.time {
+    margin-bottom: 0;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    transition: all 0.6s;
+}
+.time {
+    color: var(--light-gray) !important;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+.magazine_card:hover,
+.magazine_card:active,
+.magazine_card:focus {
+    cursor: pointer;
+	box-shadow: 1px 1px 20px rgba(18, 18, 19, 0.5);
+	transition: all 0.6s;
+}
+
+.magazine_card:hover .magazine_img_cover,
+.magazine_card:active .magazine_img_cover,
+.magazine_card:focus .magazine_img_cover {
+    border: 1px solid var(--main-red);
+}
+
+.magazine_card:hover img,
+.magazine_card:active img,
+.magazine_card:focus img {
+    transform: scale(1.3);
+}
+
+/* ==================================================== */
+/* ============== MAGAZINE PAGE STYLES ================ */
+/* ==================================================== */
+.page_title_container {
+    margin: 0.5rem 5rem;
+    margin-bottom: 2rem;
+    padding: 1.1rem 0rem;
+    border-bottom: 1px solid var(--text-gray)
+}
+.page_title {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+/* ==================================================== */
+/* =============== USER PROFILE STYLES ================ */
+/* ==================================================== */
+.user_profile {
+    padding: 2rem 5rem;
+}
+.profile_card-right {
+    align-items: flex-end;
+}
+.profile_img_cover {
+    width: 35%;
+}
+.profile_name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-gray);
+}
+.membership {
+    font-size: 0.8rem;
+    color: var(--lighter-gray);
+    margin-bottom: 0.6rem;
+}
+.profile_details {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+/* ==================================================== */
+/* ================ RESPONSIVE STYLES ================= */
+/* ==================================================== */
+@media screen and (max-width: 1024px) {
+    .left_landing h2 {
+        line-height: 1;
+        font-size: 2rem;
+    }
+    .left_landing form {
+        margin-top: 3.5rem;
+    }
+    .magazine_grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-row-gap: 2rem;
+        grid-column-gap: 2rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    #myBtn {
+		bottom: 30px;
+		right: 2rem;
+		padding: 7px;
+		font-size: 18px;
+	}
+    /* ==== HEADER ==== */
+    .landing_contents {
+        flex-direction: column;
+    }
+    .left_landing h2 {
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+    .left_landing, 
+    .right_landing {
+        width: 100%;
+        height: 46%;
+    }
+    .left_landing h4 {
+        width: 50%;
+        font-size: 0.9rem;
+        margin-bottom: 0.7rem;
+    }
+    .get_started {
+        padding: 0.3rem 1.3rem;
+        font-size: 0.9rem;
+        margin: 0.8rem auto;
+    }
+    .left_landing form h3{
+        font-size: 1rem;
+    }
+    .left_landing form i{
+        margin-top: 2%;
+        margin-left: 0.8rem;
+        font-size: 1.1rem;
+    }
+    #search_field {
+        padding: 0.8rem;
+        padding-left: 2.5rem;
+        font-size: 0.9rem;
+    }
+    .left_landing form {
+        margin-top: 2.5rem;
+        padding: 0 4rem;
+    }
+    .landing_img_cover {
+        width: 40%;
+    }
+    /* ===  MAGAZINE STYLES ==== */
+    #top_magazine,
+    #second_magazine,
+    #third_magazine,
+    #fourth_magazine,
+    #fifth_magazine {
+        padding: 1rem 4rem;
+    }
+    .body_title {
+        font-size: 1.2rem;
+    }
+    #top_magazine a ,
+    #second_magazine a,
+    #third_magazine a,
+    #fourth_magazine a,
+    #fifth_magazine a{    
+        font-size: 1.3rem;
+    }
+    .magazine_grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-row-gap: 2rem;
+        grid-column-gap: 2rem;
+    }
+    .page_title_container {
+        margin: 0.5rem 4rem;
+        padding: 0.7rem 0rem;
+        border-bottom: 0.8px solid var(--text-gray)
+    }
+    .page_title {
+        font-size: 1.2rem;
+       
+    }
+    .user_profile {
+        padding: 1.7rem 4rem;
+    }
+    .profile_img_cover {
+        width: 32%;
+    }
+    .profile_name {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+    }
+    .membership {
+        font-size: 0.7rem;
+        margin-bottom: 0.4rem;
+    }
+    .profile_details {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    #myBtn {
+		bottom: 30px;
+		right: 18px;
+		padding: 7px;
+		font-size: 16px;
+	}
+    .left_landing h2 {
+        font-size: 1.3rem;
+    }
+    .left_landing h4 {
+        width: 60%;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    .get_started {
+        padding: 0.2rem 1.1rem;
+        font-size: 0.8rem;
+        margin: 0.6rem auto;
+    }
+    .left_landing form h3{
+        font-size: 0.9rem;
+    }
+    .left_landing form i{
+        margin-top: 2%;
+        margin-left: 0.8rem;
+        font-size: 1.1rem;
+    }
+    #search_field {
+        padding: 0.7rem;
+        padding-left: 2.5rem;
+        font-size: 0.8rem;
+    }
+    .left_landing form {
+        margin-top: 2.5rem;
+        padding: 0 2rem;
+    }
+    .landing_img_cover {
+        width: 60%;
+    }
+    /* ===  MAGAZINE STYLES ==== */
+    #top_magazine,
+    #second_magazine,
+    #third_magazine,
+    #fourth_magazine,
+    #fifth_magazine {
+        padding: 2rem 3rem;
+    }
+    .body_title {
+        font-size: 1.1rem;
+    }
+    #top_magazine a ,
+    #second_magazine a{
+        font-size: 1.2rem;
+    }
+    .magazine_grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .page_title_container {
+        margin: 0.4rem 3rem;
+        padding: 0.6rem 0rem;
+        border-bottom: 0.7px solid var(--text-gray)
+    }
+    .page_title {
+        font-size: 1.1rem;
+    }
+    .user_profile {
+        padding: 1.5rem 3rem;
+    }
+    .profile_card-right {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .profile_img_cover {
+        width: 52%;
+        margin-bottom: 1rem;
+    }
+    .profile_name {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+    }
+    .membership {
+        font-size: 0.7rem;
+        margin-bottom: 0.4rem;
+    }
+    .profile_details {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+    }
+}
+@media screen and (max-width: 468px) {
+    .landing_img_cover {
+        width: 70%;
+    }
+    #top_magazine,
+    #second_magazine,
+    #third_magazine,
+    #fourth_magazine,
+    #fifth_magazine {
+        padding: 2rem 4rem;
+    }
+    .body_title {
+        font-size: 1rem;
+    }
+    #top_magazine a ,
+    #second_magazine a{
+        font-size: 1.2rem;
+    }
+    .magazine_grid {
+        grid-template-columns: 1fr;
+    }
+    .page_title_container {
+        margin: 0.4rem 1.5rem;
+        padding: 0rem 0rem;
+    }
+    .page_title {
+        font-size: 1rem;
+    }
+    .user_profile {
+        padding: 3rem 1.5rem;
+    }
+    .profile_img_cover {
+        width: 72%;
+        margin-bottom: 2rem;
+    }
+    .profile_name {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+    .membership {
+        font-size: 0.65rem;
+    }
+    .profile_details {
+        font-size: 0.8rem;
+    }
+}

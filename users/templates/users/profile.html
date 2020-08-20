@@ -1,0 +1,66 @@
+{% extends "articles/base.html" %}
+{% load crispy_forms_tags %}
+{% load custom_filter_tags %}
+{% load static %}
+{% block content %}
+    <div class="user_profile d-flex justify-content-between">
+        <div class="d-flex profile_card-right">
+            <div class="profile_img_cover">
+                <img src="{{ object.avatar.url }}" alt="">
+            </div>
+            <div class="ml-lg-4 ml-md-3 ml-sm-2 ml-1">
+                <h6 class="profile_name">{{ object.username }}</h6>
+                <p class="membership">Membership Since : <span>{{ object.date_joined }}</span></p>
+                <p class="profile_details">{{ count }} Articles</p>
+                <p class="profile_details">Email: {{ object.email }}</p>
+                {% if object.social_handle %}
+                <p class="profile_details">Twitter: <a href="https://twitter.com/{{ object.social_handle }}" target="_blank">{{ object.social_handle }}</a></p>
+                {% endif %}
+                {% if user == object %}
+                <div>
+                    <a href="{% url 'articles:draft' %}">My Drafts</a>
+                </div>
+                {% endif %}
+                {% if object.bio %}
+                 <p class="profile-details">Bio: {{ object.bio }}</p>
+                {% endif%}
+            </div>
+        </div>
+        {% if user == object %}
+        <div>
+            <a href="{% url 'users:edit' %}"><i class='bx bxs-cog'></i></a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="page_title_container">
+        {% if user == object %}
+        <h3 class="page_title text-center">YOUR ARTICLES</h3>
+        {% else %}
+        <h3 class="page_title text-center">Articles by {{ object.username }}</h3>
+        {% endif %}
+
+    </div>
+
+    <section id="top_magazine">
+
+        <div class="magazine_grid">
+            {% for article in articles %}
+             <a href="{% url 'articles:detail' article.id %}">
+            <div class="magazine_card">
+                <div class="magazine_img_cover">
+                    {% if article.cover_image %}
+                    <img src="{{ article.cover_image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <div class="magazine_card_content">
+                    <span class="magazine_title">{{ article.categories }}</span>
+                    <h6>{{ article.title|shrink }}...</h6>
+                    <p class="time">{{ article.date_posted|date:"F d, Y" }}</p>
+                </div>
+            </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

@@ -11,7 +11,7 @@ from itertools import chain
 import random
 from django.db.models import Q
 from .apis import search
-api_key = config('api_key')
+api_key = os.getenv('api_key')
 
 
 class HomeView(ListView):

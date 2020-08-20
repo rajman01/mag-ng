@@ -1,4 +1,3 @@
-from decouple import config
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import ArticleModel, ImageModel, TextModel

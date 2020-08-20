@@ -26,17 +26,17 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         db_size = ArticleModel.objects.count()
         if db_size == 0:
-            random_list = 0
-        elif db_size == 1 :
-            random_list = 0
+            random_list = random.sample(range(db_size), 0)
+        elif db_size == 1:
+            random_list = random.sample(range(db_size), 1)
         elif db_size == 2:
-            random_list = 2
+            random_list = random.sample(range(db_size), 2)
         elif db_size == 3:
-            random_list = 3
+            random_list = random.sample(range(db_size), 3)
         elif db_size == 4:
-            random_list = 4
+            random_list = random.sample(range(db_size), 4)
         elif db_size == 5:
-            random_list = 5
+            random_list = random.sample(range(db_size), 5)
         else:
             random_list = random.sample(range(db_size), 5)
 

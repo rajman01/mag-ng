@@ -1,0 +1,1 @@
+web: gunicorn mag_ng.wsgi

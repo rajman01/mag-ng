@@ -12,7 +12,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     #email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
     password = serializers.CharField(min_length=8, write_only=True)
     articles = serializers.HyperlinkedRelatedField(
-        view_name='detail', 
+        view_name='article-detail',
         read_only=True,
         many=True)
     
@@ -36,7 +36,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     author = serializers.ReadOnlyField(source='author.email')
-    article = serializers.HyperlinkedRelatedField(view_name='articles', read_only=True)
+    # article = serializers.HyperlinkedRelatedField(view_name='articles', read_only=True)
 
     class Meta:
         model = ArticleModel

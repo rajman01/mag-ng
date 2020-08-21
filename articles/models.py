@@ -47,7 +47,7 @@ class ArticleModel(models.Model):
     title = models.CharField(max_length=255)
     cover_image = models.ImageField(blank=True, null=True, upload_to='images/')
     description = models.TextField(blank=True, null=True)
-    author = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, default=1, on_delete=models.CASCADE, related_name='articles')
     date_posted = models.DateTimeField(default=timezone.now)
     publish = models.BooleanField(default=False)
     categories = models.CharField(max_length=50, choices=categories_choices, default='fashion')

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df3cdeb0-9c21-4c6f-b259-58cd9744def3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/users/templates/users/update_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/update_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,5 +34,11 @@
       <updated>1597898158975</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="465" y="183" width="587" height="534" key="find.popup" timestamp="1598040479196">
+      <screen x="0" y="0" width="1517" height="900" />
+    </state>
+    <state x="465" y="183" width="587" height="534" key="find.popup/0.0.1517.900@0.0.1517.900" timestamp="1598040479196" />
   </component>
 </project>

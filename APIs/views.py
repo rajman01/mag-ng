@@ -19,7 +19,7 @@ def api_root(request, format=None):
         'users': reverse('user-list', request=request, format=format),
         'articles': reverse('articles', request=request, format=format),
         'signup': reverse('signup', request=request, format=format),
-        'search':reverse('search', request=request, format=format),
+        'search': reverse('search', request=request, format=format),
     })
 
 User = get_user_model()

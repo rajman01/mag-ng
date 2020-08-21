@@ -40,14 +40,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.email)
         super(CustomUser, self).save()
+        if self.avatar:
+            img = Image.open(self.avatar)
 
-        img = Image.open(self.avatar)
-
-        if img.height > 514 or img.width > 534:
-            output_size = (514, 534)
-            img.thumbnail(output_size)
-            # img.save(self.avatar.path)
-            fh = storage.open(self.avatar.name, "w")
-            picture_format = 'png'
-            img.save(fh, picture_format)
-            fh.close()
+            if img.height > 514 or img.width > 534:
+                output_size = (514, 534)
+                img.thumbnail(output_size)
+                # img.save(self.avatar.path)
+                fh = storage.open(self.avatar.name, "w")
+                picture_format = 'png'
+                img.save(fh, picture_format)
+                fh.close()

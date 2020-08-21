@@ -20,8 +20,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(
             email=validated_data['email'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
+            # first_name=validated_data['first_name'],
+            username=validated_data['username'],
             password=validated_data['password']
         )
         #user.set_password(validated_data['password'])
@@ -30,7 +30,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id','email','first_name','last_name','password','articles']
+        fields = ['id', 'email', 'username', 'password', 'articles']
         read_only_fields = ['id',]
         
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
@@ -39,7 +39,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ArticleModel
-        fields = ['url','id','author','title','cover_image','date_posted','description','category','publish']
+        fields = ['url', 'id', 'author', 'title', 'cover_image', 'date_posted', 'description', 'categories', 'publish']
 
 class SearchSerializer(serializers.HyperlinkedModelSerializer):
 

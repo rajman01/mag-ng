@@ -39,7 +39,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.email)
-        super(CustomUser, self).save()
+        super(CustomUser, self).save(*args, **kwargs)
         if self.avatar:
             img = Image.open(self.avatar)
 

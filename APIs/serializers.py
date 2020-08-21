@@ -36,7 +36,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     author = serializers.ReadOnlyField(source='author.email')
-    article = serializers.HyperlinkedRelatedField(view_name='articles')
+    article = serializers.HyperlinkedRelatedField(view_name='articles', read_only=True)
 
     class Meta:
         model = ArticleModel

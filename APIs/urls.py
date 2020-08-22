@@ -8,11 +8,11 @@ urlpatterns = [
     path('', views.api_root),
     path('signup/', views.SignUpView.as_view(), name='signup'),
     path('users/', views.UserList.as_view(), name='user-list'),
-    path('profile/<int:pk>/', views.Profile.as_view(), name='profile'),
+    path('profile/<int:pk>/', views.Profile.as_view(), name='customuser-detail'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('article/', views.ArticleList.as_view(), name='articles'),
-    path('article/<int:pk>/', views.ArticleDetail.as_view(), name='article-detail'),
+    path('article/<int:pk>/', views.ArticleDetail.as_view(), name='articlemodel-detail'),
     path('search/', views.SearchList.as_view(), name='search'),
 ]
 

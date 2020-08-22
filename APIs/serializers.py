@@ -12,7 +12,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     #email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
     password = serializers.CharField(min_length=8, write_only=True)
     articles = serializers.HyperlinkedRelatedField(
-        view_name='article-detail',
+        view_name='articlemodel-detail',
         read_only=True,
         many=True)
     

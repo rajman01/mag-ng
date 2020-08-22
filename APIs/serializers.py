@@ -30,7 +30,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'email', 'username', 'password', 'articles']
+        fields = ['url', 'id', 'email', 'username', 'password', 'articles']
         read_only_fields = ['id',]
         
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):

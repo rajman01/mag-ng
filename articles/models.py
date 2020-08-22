@@ -58,7 +58,7 @@ class ArticleModel(models.Model):
 
 
 class ImageModel(models.Model):
-    article = models.ForeignKey(ArticleModel, default=None, on_delete=models.CASCADE)
+    article = models.ForeignKey(ArticleModel, default=None, on_delete=models.CASCADE, related_name='image_fields')
     image = models.ImageField(upload_to='images/')
     image_description = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(default=timezone.now)
@@ -68,7 +68,7 @@ class ImageModel(models.Model):
 
 
 class TextModel(models.Model):
-    article = models.ForeignKey(ArticleModel, default=None, on_delete=models.CASCADE)
+    article = models.ForeignKey(ArticleModel, default=None, on_delete=models.CASCADE, related_name='text_fields')
     header = models.CharField(max_length=255, null=True, blank=True)
     text = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)

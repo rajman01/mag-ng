@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 from users.models import CustomUser
-from articles.models import ArticleModel
+from articles.models import ArticleModel, ImageModel, TextModel
 
 User = get_user_model()
 
@@ -33,6 +33,26 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'id', 'email', 'username', 'password', 'articles', ]
         read_only_fields = ['id',]
         
+class ImageSerializer(serializers.HyperlinkedModelSerializer):
+
+    article = serializers.ReadOnlyField(source='article.title')
+    # article = serializers.HyperlinkedRelatedField(view_name='articles', read_only=True)
+
+    class Meta:
+        model = ImageModel
+        fields = ['url', 'id','article', 'image', 'image_description', 'timestamp']
+
+class TextSerializer(serializers.HyperlinkedModelSerializer):
+
+    article = serializers.ReadOnlyField(source='article.title')
+    # article = serializers.HyperlinkedRelatedField(view_name='articles', read_only=True)
+
+
+    class Meta:
+        model = TextModel
+        fields = ['url', 'id', 'article', 'title', 'header', 'text']
+
+
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     author = serializers.ReadOnlyField(source='author.email')

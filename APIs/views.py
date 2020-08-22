@@ -10,7 +10,7 @@ from rest_framework.mixins import CreateModelMixin
 from rest_framework.authtoken.models import Token
 
 from articles.models import ArticleModel, ImageModel, TextModel
-from .serializers import UserSerializer, ArticleSerializer, SearchSerializer
+from .serializers import UserSerializer, ArticleSerializer, SearchSerializer, ImageSerializer, TextSerializer
 from .permissions import IsOwnerOrReadOnly
 
 @api_view(['GET'])
@@ -74,7 +74,7 @@ class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class ImageFieldDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ImageModel.objects.all()
-    serializer_class = ArticleSerializer
+    serializer_class = ImageSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,
         IsOwnerOrReadOnly
@@ -82,7 +82,7 @@ class ImageFieldDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class TextFiedDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = TextModel.objects.all()
-    serializer_class = ArticleSerializer
+    serializer_class = TextSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,
         IsOwnerOrReadOnly

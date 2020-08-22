@@ -50,7 +50,7 @@ class TextSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = TextModel
-        fields = ['url', 'id', 'article', 'title', 'header', 'text']
+        fields = ['url', 'id', 'article', 'header', 'text', 'timestamp']
 
 
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):

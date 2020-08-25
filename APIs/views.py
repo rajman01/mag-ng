@@ -39,8 +39,8 @@ class Profile(generics.RetrieveAPIView):
 
 class SignUpView(APIView):
 
-    def post(self, request,format=None):
-        serializer = UserSerializer(data=request.data)
+    def post(self, request, format=None):
+        serializer = UserSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             user = serializer.save()
             if user:
@@ -50,8 +50,8 @@ class SignUpView(APIView):
                 return Response(json, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ArticleList(generics.ListCreateAPIView):
 
+class ArticleList(generics.ListCreateAPIView):
     search_fields = ['title', 'author']
     filter_backends = (filters.SearchFilter,)
     queryset = ArticleModel.objects.all()

@@ -288,7 +288,7 @@ def search_view(request):
         result = ArticleModel.objects.search(query=query, publish=True)
         context['objects'] = result
         context['category'] = query
-    return render(request, 'articles/search_view.html')
+    return render(request, 'articles/search_view.html', context)
 
 
 def covid(request):

@@ -56,7 +56,7 @@ class ArticleQuerySet(models.QuerySet):
             Q(categories__icontains=query) |
             Q(author__username__icontains=query)
         )
-        return  self.filter(lookup)
+        return self.filter(lookup)
 
 
 class ArticleManager(models.Manager):

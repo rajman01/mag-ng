@@ -10,7 +10,7 @@ from rest_framework.mixins import CreateModelMixin
 from rest_framework.authtoken.models import Token
 
 from articles.models import ArticleModel, ImageModel, TextModel
-from .serializers import UserSerializer, ArticleSerializer, SearchSerializer, ImageSerializer, TextSerializer
+from .serializers import UserSerializer, ArticleSerializer, ImageSerializer, TextSerializer
 from .permissions import IsOwnerOrReadOnly
 
 @api_view(['GET'])

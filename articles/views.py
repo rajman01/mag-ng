@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import ArticleModel, ImageModel, TextModel
+from .models import ArticleModel, ImageModel, TextModel, SearchQuery
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.forms import inlineformset_factory
 from django.contrib.auth.decorators import login_required
@@ -259,24 +259,35 @@ class RecentView(ListView):
         return context
 
 
-class SearchView(ListView):
-    model = ArticleModel
-    template_name = 'search_view.html'
-    context_object_name = 'objects'
+# class SearchView(ListView):
+#     model = ArticleModel
+#     template_name = 'search_view.html'
+#     context_object_name = 'objects'
+#
+#     def get_queryset(self):
+#         query = self.request.GET.get('q')
+#         article_list = ArticleModel.objects.filter(
+#             Q(title__icontains=query) | Q(author__icontains=query, publish=True)
+#         )
+#         return article_list
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['category'] = self.request.GET.get('q')
+#         context['title'] = 'Search'
+#         return context
 
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        article_list = ArticleModel.objects.filter(
-            Q(title__icontains=query) | Q(author__icontains=query, publish=True)
-        )
-        return article_list
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['category'] = self.request.GET.get('q')
-        context['title'] = 'Search'
-        return context
-
+def search_view(request):
+    query = request.GET.get('q', None)
+    user = None
+    if request.user.is_authenticated:
+        user = request.user
+    context = {'query':query}
+    if query is not None:
+        SearchQuery.objects.create(user=user, query=query)
+        result = ArticleModel.objects.search(query=query)
+        context['objects'] = result
+    return render(request, 'articles/search_view.html')
 
 def covid(request):
     query = request.POST.get('search')

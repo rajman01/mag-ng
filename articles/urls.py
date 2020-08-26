@@ -14,6 +14,6 @@ urlpatterns = [
     path('draft/', views.DraftView.as_view(), name='draft'),
     path('category/<category>/', views.CategoryView.as_view(), name='category'),
     path('recent/', views.RecentView.as_view(), name='recent'),
-    path('search/', views.SearchView.as_view(), name='search'),
+    path('search/', views.search_view, name='search'),
     path('covid/', views.covid, name='covid')
 ]

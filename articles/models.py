@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 #from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.utils import timezone
@@ -43,15 +44,48 @@ categories_choices = (
 )
 
 
+class ArticleQuerySet(models.QuerySet):
+    def published(self):
+        now = timezone.now()
+        return self.filter(date_posted__lte=now)
+
+    def search(self, query):
+        lookup = (
+            Q(title__icontains=query) |
+            Q(description__icontains=query) |
+            Q(categories__icontains=query) |
+            Q(author__username__icontains=query)
+        )
+        return  self.filter(lookup)
+
+
+class ArticleManager(models.Manager):
+    def get_queryset(self):
+        return ArticleQuerySet(self.model, using=self._db)
+
+    def published(self):
+        return self.get_queryset().published()
+
+    def search(self, query=None):
+        if query is None:
+            return self.get_queryset().none()
+        return self.get_queryset().published().search(query)
+
+
 class ArticleModel(models.Model):
     title = models.CharField(max_length=255)
     cover_image = models.ImageField(blank=True, null=True, upload_to='images/')
     description = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User, default=1, on_delete=models.CASCADE, related_name='articles')
-    date_posted = models.DateTimeField(default=timezone.now)
+    date_posted = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True, default=timezone.now)
+    updated = models.DateTimeField(auto_now=True, default=timezone.now)
+    timestamp = models.DateTimeField(auto_now=True, default=timezone.now)
     publish = models.BooleanField(default=False)
     categories = models.CharField(max_length=50, choices=categories_choices, default='fashion')
-    objects = models.Manager()
+    objects = ArticleManager()
+
+    class Meta:
+        ordering = ['-date_posted', '-updated', '-timestamp']
 
     def __str__(self):
         return self.title
@@ -75,3 +109,12 @@ class TextModel(models.Model):
 
     def __str__(self):
         return self.article.title
+
+
+class SearchQuery(models.Model):
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
+    query = models.CharField(max_length=220)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.query

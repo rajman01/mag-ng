@@ -285,7 +285,7 @@ def search_view(request):
     context = {'query':query}
     if query is not None:
         SearchQuery.objects.create(user=user, query=query)
-        result = ArticleModel.objects.search(query=query, publish=True)
+        result = ArticleModel.objects.search(query=query)
         context['objects'] = result
         context['category'] = query
     return render(request, 'articles/search_view.html', context)

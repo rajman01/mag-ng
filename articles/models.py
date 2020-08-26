@@ -51,10 +51,10 @@ class ArticleQuerySet(models.QuerySet):
 
     def search(self, query):
         lookup = (
-            Q(title__icontains=query) |
-            Q(description__icontains=query) |
-            Q(categories__icontains=query) |
-            Q(author__username__icontains=query)
+            Q(title__icontains=query, publish=True) |
+            Q(description__icontains=query, publish=True) |
+            Q(categories__icontains=query, publish=True) |
+            Q(author__username__icontains=query, publish=True)
         )
         return self.filter(lookup)
 

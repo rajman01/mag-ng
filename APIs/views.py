@@ -19,7 +19,7 @@ def api_root(request, format=None):
         'users': reverse('user-list', request=request, format=format),
         'articles': reverse('articles', request=request, format=format),
         'signup': reverse('signup', request=request, format=format),
-        'search': reverse('search', request=request, format=format),
+        # 'search': reverse('search', request=request, format=format),
     })
 
 User = get_user_model()
@@ -52,8 +52,8 @@ class SignUpView(APIView):
 
 
 class ArticleList(generics.ListCreateAPIView):
-    search_fields = ['title', 'author']
-    filter_backends = (filters.SearchFilter,)
+    search_fields = ['title', 'author__username', 'categories', 'description']
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter)
     queryset = ArticleModel.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = [
@@ -88,11 +88,12 @@ class TextFiedDetail(generics.RetrieveUpdateDestroyAPIView):
         IsOwnerOrReadOnly
         ]
 
-class SearchList(generics.ListAPIView):
-    serializer_class = SearchSerializer
-    def get_queryset(self):
-        query = self.request.query_params.get('query', None)
-        articles = ArticleModel.objects.filter(
-            Q(title__icontains=query) | Q(author__icontains=query)
-        )
-        return articles
+
+# class SearchList(generics.ListAPIView):
+#     serializer_class = SearchSerializer
+#     def get_queryset(self):
+#         query = self.request.query_params.get('query', None)
+#         articles = ArticleModel.objects.filter(
+#             Q(title__icontains=query) | Q(author__icontains=query)
+#         )
+#         return articles

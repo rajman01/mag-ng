@@ -70,15 +70,15 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
         model = ArticleModel
         fields = ['url', 'id', 'author', 'title', 'cover_image', 'date_posted', 'description', 'categories', 'publish', 'image_fields', 'text_fields']
 
-class SearchSerializer(serializers.HyperlinkedModelSerializer):
-
-    def to_native(self, obj):
-        if isinstance(obj, ArticleModel):
-            serializer = ArticleSerializer(obj)
-        elif isinstance(obj, User):
-            serializer = UserSerializer(obj)
-        else:
-            raise Exception("%s not found" %(obj))
-        return serializer.data
-    class Meta:
-        model = ArticleModel
+# class SearchSerializer(serializers.HyperlinkedModelSerializer):
+#
+#     def to_native(self, obj):
+#         if isinstance(obj, ArticleModel):
+#             serializer = ArticleSerializer(obj)
+#         elif isinstance(obj, User):
+#             serializer = UserSerializer(obj)
+#         else:
+#             raise Exception("%s not found" %(obj))
+#         return serializer.data
+#     class Meta:
+#         model = ArticleModel

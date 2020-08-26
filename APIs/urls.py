@@ -15,7 +15,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('article/', views.ArticleList.as_view(), name='articles'),
     path('article/<int:pk>/', views.ArticleDetail.as_view(), name='articlemodel-detail'),
-    path('search/', views.SearchList.as_view(), name='search'),
+    # path('search/', views.SearchList.as_view(), name='search'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

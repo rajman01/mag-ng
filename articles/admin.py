@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ArticleModel, ImageModel, TextModel
+from .models import ArticleModel, ImageModel, TextModel, SearchQuery
 
 
 class ArticleImageAdmin(admin.StackedInline):
@@ -24,3 +24,5 @@ admin.register(ImageModel,ArticleImageAdmin)
 
 
 admin.register(TextModel,ArticleTextAdmin)
+
+admin.site.register(SearchQuery)

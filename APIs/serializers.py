@@ -11,7 +11,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     #email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
     password = serializers.CharField(min_length=8, write_only=True)
-    articles = serializers.HyperlinkedRelatedField(
+    articlemodel_set = serializers.HyperlinkedRelatedField(
         view_name='articlemodel-detail',
         read_only=True,
         many=True)
@@ -30,7 +30,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ['url', 'id', 'email', 'username', 'password', 'articles', ]
+        fields = ['url', 'id', 'email', 'username', 'password', 'articlemodel_set', ]
         read_only_fields = ['id',]
         
 class ImageSerializer(serializers.HyperlinkedModelSerializer):
@@ -57,18 +57,18 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     author = serializers.ReadOnlyField(source='author.email')
     # article = serializers.HyperlinkedRelatedField(view_name='articles', read_only=True)
-    image_fields = serializers.HyperlinkedRelatedField(
+    imagemodel_set = serializers.HyperlinkedRelatedField(
         view_name='imagemodel-detail',
         read_only=True,
         many=True)
-    text_fields = serializers.HyperlinkedRelatedField(
+    textmodel_set = serializers.HyperlinkedRelatedField(
         view_name='textmodel-detail',
         read_only=True,
         many=True)
 
     class Meta:
         model = ArticleModel
-        fields = ['url', 'id', 'author', 'title', 'cover_image', 'date_posted', 'description', 'categories', 'publish', 'image_fields', 'text_fields']
+        fields = ['url', 'id', 'author', 'title', 'cover_image', 'date_posted', 'description', 'categories', 'publish', 'imagemodel_set', 'textmodel_set']
 
 # class SearchSerializer(serializers.HyperlinkedModelSerializer):
 #

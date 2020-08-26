@@ -60,7 +60,7 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
     template_name = 'articles/create_article.html'
 
     def get_success_url(self):
-        user_latest_article = ArticleModel.objects.all().filter(author=self.request.user).last()
+        user_latest_article = ArticleModel.objects.all().filter(author=self.request.user).first()
         return reverse('articles:write', kwargs={'form_id': user_latest_article.id})
 
     def form_valid(self, form):

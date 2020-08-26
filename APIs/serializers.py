@@ -68,7 +68,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ArticleModel
-        fields = ['url', 'id', 'author', 'title', 'cover_image', 'date_posted', 'description', 'categories', 'publish', 'imagemodel', 'textmodel']
+        fields = ['url', 'id', 'author', 'title', 'cover_image', 'date_posted', 'description', 'categories', 'publish', 'image_fields', 'text_fields']
 
 # class SearchSerializer(serializers.HyperlinkedModelSerializer):
 #

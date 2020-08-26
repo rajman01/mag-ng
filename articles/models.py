@@ -76,7 +76,7 @@ class ArticleModel(models.Model):
     title = models.CharField(max_length=255)
     cover_image = models.ImageField(blank=True, null=True, upload_to='images/')
     description = models.TextField(blank=True, null=True)
-    author = models.ForeignKey(User, default=1, on_delete=models.CASCADE, related_name='articles')
+    author = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True, default=timezone.now)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -92,7 +92,7 @@ class ArticleModel(models.Model):
 
 
 class ImageModel(models.Model):
-    article = models.ForeignKey(ArticleModel, default=None, on_delete=models.CASCADE, related_name='imagemodel')
+    article = models.ForeignKey(ArticleModel, default=None, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/')
     image_description = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(default=timezone.now)
@@ -102,7 +102,7 @@ class ImageModel(models.Model):
 
 
 class TextModel(models.Model):
-    article = models.ForeignKey(ArticleModel, default=None, on_delete=models.CASCADE, related_name='textmodel')
+    article = models.ForeignKey(ArticleModel, default=None, on_delete=models.CASCADE)
     header = models.CharField(max_length=255, null=True, blank=True)
     text = models.TextField()
     timestamp = models.DateTimeField(default=timezone.now)

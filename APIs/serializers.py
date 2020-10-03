@@ -40,7 +40,7 @@ class ImageSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ImageModel
-        fields = ['url', 'id','article', 'image', 'image_description', 'timestamp']
+        fields = ['url', 'id', 'article', 'image', 'image_description', 'timestamp']
 
 class TextSerializer(serializers.HyperlinkedModelSerializer):
 

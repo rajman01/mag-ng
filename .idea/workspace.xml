@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df3cdeb0-9c21-4c6f-b259-58cd9744def3" name="Default Changelist" comment="" />
+    <list default="true" id="df3cdeb0-9c21-4c6f-b259-58cd9744def3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/serializers.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +36,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="571" y="363" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598569162364">
+      <screen x="0" y="0" width="1524" height="900" />
+    </state>
+    <state x="571" y="363" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1524.900@0.0.1524.900" timestamp="1598569162364" />
     <state x="465" y="183" width="587" height="534" key="find.popup" timestamp="1598040479196">
       <screen x="0" y="0" width="1517" height="900" />
     </state>
